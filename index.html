@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css"
+      integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>WeSplit</h1>
+        <div class="add">
+          <input
+            name="add-user"
+            type="text"
+            placeholder="add user"
+            class="add-user"
+          />
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <label for="add-user">add user</label>
+      </nav>
+    </header>
+    <main>
+      <div class="app">
+        <div class="head-app">
+          <div id="user-display-name">
+            <div id="icon-header">
+              <i class="fa-solid fa-users icon-user"></i>
+              <p class="icon-user">:</p>
+            </div>
+            <h2 id="user">no user</h2>
+          </div>
+          <div class="icons-right">
+            <i id="delete-user" class="fa-solid fa-trash"></i>
+            <i id="details" class="fa-solid fa-circle-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="app-container">
+          <!-- the 2 inputs and add button  -->
+          <div class="inputs-and-button">
+            <div class="add-item">
+              <!-- ALERT AMOUNT INVALID  -->
+              <p id="alert" class="hidden">
+                <i
+                  id="alert-icon-amount"
+                  class="fa-solid fa-triangle-exclamation"
+                ></i>
+                Enter a valid amount.
+              </p>
+
+              <!-- Amount input -->
+              <div class="input-flex">
+                <label for="">spent:</label>
+                <input
+                  type="number"
+                  id="input-amount"
+                  placeholder="ex: 30"
+                /><span> €</span>
+              </div>
+
+              <!-- reason input -->
+              <div class="input-flex">
+                <label for="">for:</label>
+                <input
+                  type="text"
+                  spellcheck="false"
+                  placeholder="ex: supermarket"
+                  id="input-reason"
+                />
+              </div>
+            </div>
+
+            <!-- button add expenses  -->
+            <button id="add-button">add</button>
+          </div>
+
+          <!-- Display expenses of all users-->
+          <div class="text-display">
+            <div id="expenses-header-date">
+              <h5 id="expenses-header">Expenses</h5>
+              <span id="last-reset"></span>
+            </div>
+            <ul id="display-expenses"></ul>
+
+            <hr class="rounded" />
+
+            <!-- Display debts of users  -->
+            <h5 id="debtors-creditors-header">In other words:</h5>
+            <ul id="debtors-creditors"></ul>
+            <button id="reset-btn">Reset all</button>
+          </div>
+        </div>
+
+        <!-- Part visible only  if user Displayed owns money-->
+        <!-- allows user displayed to refund another user -->
+        <!-- keep space for  refund part to pop up without moving the rest -->
+        <div id="keep-height">
+          <div id="refund-container" class="hidden">
+            <!-- label and input for amount to refund  -->
+            <label for="amount-refound">refund: </label>
+            <input
+              name="amount-refound"
+              type="number"
+              id="input-refund"
+              placeholder="ex: 12"
+            /><span> €</span>
+
+            <!-- select user to refund  -->
+            <div class="creditor-and-button">
+              <div class="creditor-select">
+                <p>to :</p>
+
+                <h4 id="creditor-to-refund"></h4>
+              </div>
+              <button id="refund-button">refund</button>
+            </div>
+
+            <!-- alert if amount is incorrect for refund  -->
+            <p id="alert-refund" class="hidden">
+              <i
+                id="alert-icon-refund"
+                class="fa-solid fa-triangle-exclamation"
+              ></i>
+              Please enter a valide amount.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <h4>Created by Victor Leman - 2023</h4>
+    </footer>
+    <!-- MODAL -->
+    <!-- display user's expenses and refunds done  -->
+    <div id="modal-container" class="modal hidden">
+      <div id="modal-content">
+        <span id="close">&times;</span>
+        <h3 id="user-name"></h3>
+        <h4 id="modal-expenses-header" class="modal-headers hidden">
+          Expenses:
+        </h4>
+        <ul id="modal-list"></ul>
+        <h4 id="modal-refunds-header" class="modal-headers hidden">Refunds:</h4>
+        <ul id="modal-refunds"></ul>
+        <!--         <div id="info-message">
+          <p>
+            <i class="fa-solid fa-circle-info"></i> Double click on item to
+            delete expenses.
+          </p>
+        </div> -->
+      </div>
+    </div>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

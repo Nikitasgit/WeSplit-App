@@ -1,0 +1,336 @@
+@font-face {
+  font-family: "Montserrat-regular";
+  src: url(./assets/fonts/Montserrat-Regular.ttf);
+}
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,500&display=swap");
+
+:root {
+  --white: #fefefe;
+  --dark-gray: #7f8588;
+  --yellow: #ffc171;
+  --orange: #ec965d;
+  --red: #c84747;
+  --Pistachio: #afc0a7;
+}
+* {
+  font-family: "Montserrat-regular";
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-color: var(--Pistachio);
+}
+button {
+  font-weight: 500;
+  border: none;
+  height: 28px;
+  border-radius: 5px;
+  color: var(--white);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: var(--orange);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px,
+    rgba(0, 0, 0, 0.2) 0px 4px 9px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+}
+button:hover {
+  scale: 0.9;
+  background-color: var(--white);
+  color: var(--orange);
+}
+label {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+}
+input {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--dark-gray);
+  background-color: rgba(255, 255, 255, 0.176);
+}
+input:focus {
+  outline-color: var(--orange);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.app-container {
+  width: 450px;
+}
+@media only screen and (max-width: 470px) {
+  .app-container {
+    max-width: 300px;
+  }
+}
+.head-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin: 27px 0;
+}
+/* #icon-header {
+  display: flex;
+  font-size: 1.3rem;
+  align-items: center;
+} */
+.icon-user {
+  color: var(--white);
+}
+
+#user-display-name {
+  display: flex;
+}
+#user,
+#creditor-to-refund {
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: var(--white);
+}
+#user:hover,
+#creditor-to-refund:hover {
+  color: var(--orange);
+}
+
+.icons-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fa-trash {
+  transition: 0.4s;
+}
+.fa-trash:hover {
+  color: var(--red);
+  cursor: pointer;
+  transform: rotate(-20deg);
+}
+#details {
+  font-size: 1.4rem;
+  color: var(--white);
+  transition: 0.4s;
+  margin: 5px;
+}
+#details:hover {
+  transform: rotate(180deg);
+  scale: 1;
+  cursor: pointer;
+  color: var(--orange);
+}
+
+.inputs-and-button {
+  display: flex;
+  padding: 0px 15px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.add-item {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.input-flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#input-amount {
+  width: 60px;
+}
+#input-reason {
+  width: 140px;
+}
+#alert-icon-amount,
+#alert-icon-refund {
+  color: var(--red);
+}
+#alert,
+#alert-refund {
+  color: var(--red);
+  font-size: 0.9rem;
+}
+#alert-icon-refund {
+  margin-top: 15px;
+}
+.text-display {
+  margin: 10px 0 15px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.065);
+  color: var(--light-gray);
+  box-shadow: rgba(126, 126, 126, 0.3) 0px 1px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.3) 0px -3px 0px inset;
+}
+#expenses-header,
+#debtors-creditors-header {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--orange);
+}
+#expenses-header-date {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: baseline;
+}
+#last-reset {
+  color: var(--white);
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+li {
+  margin: 4px;
+}
+#display-expenses,
+#debtors-creditors {
+  text-align: left;
+  margin: 10px 0;
+}
+#reset-btn {
+  letter-spacing: 1px;
+  font-weight: 500;
+  height: 22px;
+  margin: 5px 0px;
+  line-height: 0;
+  padding: 3px 10px;
+}
+#reset-btn:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+.rounded {
+  margin: 15px;
+}
+#keep-height {
+  height: 59px;
+}
+#refund-container {
+  padding: 0px 15px;
+}
+#input-refund {
+  width: 170px;
+}
+.creditor-and-button {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+.creditor-select {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.creditor-select p {
+  font-weight: 600;
+}
+#creditor-to-refund {
+  font-size: 1.5rem;
+}
+.modal {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: auto;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-headers {
+  color: var(--orange);
+  margin-top: 15px;
+}
+#modal-content {
+  background-color: var(--white);
+  border-radius: 8px;
+  margin: 15% auto;
+  padding: 20px;
+  width: 70%;
+  position: relative;
+}
+@media only screen and (max-width: 500px) {
+  #modal-content {
+    width: 90%;
+  }
+}
+
+#modal-list,
+#modal-refunds {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+#user-name {
+  margin: 15px 0 25px;
+  color: var(--orange);
+}
+#modal-refunds li {
+  color: #000000;
+  font-size: 0.9rem;
+}
+#modal-list li {
+  color: #000000;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* #modal-list li:hover::after {
+  content: " (delete)";
+  color: var(--red);
+  font-style: italic;
+} */
+#info-message {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  font-size: 0.9rem;
+}
+#info-message i {
+  color: var(--orange);
+}
+#info-message p {
+  color: var(--orange);
+}
+#close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#close:hover {
+  scale: 1.5;
+  color: rgb(200, 71, 71);
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+#user-name {
+  color: #000000;
+}
+
+.hidden {
+  display: none;
+}

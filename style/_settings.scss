@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Montserrat-regular";
+  src: url(../assets/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Geologica-regular";
+  src: url(../assets/fonts/Geologica_Auto-Regular.ttf);
+}
+
+:root {
+  --white: #fefefe;
+  --black: #000000;
+  --light-gray: #afb7bb;
+  --dark-gray: #7f8588;
+  --yellow: #ffc171;
+  --orange: #ec965d;
+  --red: #c84747;
+  --pistachio: #adc1a3;
+}
+* {
+  font-family: "Montserrat-regular";
+  text-decoration: none;
+  list-style: none;
+  user-select: none;
+  outline-style: none;
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  background: url(../assets/img/54501.jpg) center/cover no-repeat;
+}
+button {
+  font-weight: 500;
+  border: none;
+  height: 28px;
+  border-radius: 5px;
+  color: var(--white);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: var(--orange);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px,
+    rgba(0, 0, 0, 0.2) 0px 4px 9px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+
+  &:hover {
+    scale: 0.9;
+    background-color: var(--white);
+    color: var(--orange);
+  }
+}
+label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+}
+input {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--light-gray);
+  background: none;
+  &:focus {
+    border: 1px solid var(--dark-gray);
+  }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+#alert,
+#alert-refund {
+  color: var(--red);
+  font-size: 0.9rem;
+}
+
+#alert-icon-refund {
+  margin-top: 15px;
+}
