@@ -40,6 +40,7 @@ users = JSON.parse(localStorage.getItem("users"));
 window.localStorage.users = JSON.stringify(users);
 if (users == null) {
   users = [];
+  window.localStorage.users = JSON.stringify([]);
 }
 let index = 0;
 let creditors = [];
