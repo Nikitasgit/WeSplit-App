@@ -34,11 +34,13 @@ class User {
   }
 }
 
-let users = [];
-
+let users;
 users = window.localStorage.users;
 users = JSON.parse(localStorage.getItem("users"));
 window.localStorage.users = JSON.stringify(users);
+if (users == null) {
+  users = [];
+}
 let index = 0;
 let creditors = [];
 let userDisplayed = {};
@@ -72,7 +74,6 @@ deleteUserBtn.addEventListener("click", () => {
   }
 
   index = 0;
-
   clearContent(userDisplay);
   getAndDisplayAllData();
   window.localStorage.users = JSON.stringify(users);
