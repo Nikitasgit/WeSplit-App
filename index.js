@@ -36,8 +36,6 @@ class User {
 
 let users = [];
 
-users.length = 0 ? (userDisplay.textContent = "no user") : null;
-
 users = window.localStorage.users;
 users = JSON.parse(localStorage.getItem("users"));
 window.localStorage.users = JSON.stringify(users);
@@ -74,8 +72,7 @@ deleteUserBtn.addEventListener("click", () => {
   }
 
   index = 0;
-  clearContent(displayExpenses);
-  clearContent(debtsDisplay);
+
   clearContent(userDisplay);
   getAndDisplayAllData();
   window.localStorage.users = JSON.stringify(users);
@@ -83,8 +80,6 @@ deleteUserBtn.addEventListener("click", () => {
 addUserInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     if (e.target.value.length > 2) {
-      clearContent(displayExpenses);
-      clearContent(debtsDisplay);
       users.push({
         name: e.target.value,
         expenses: 0,
@@ -103,8 +98,6 @@ addUserInput.addEventListener("keypress", (e) => {
 });
 
 resetBtn.addEventListener("click", () => {
-  clearContent(displayExpenses);
-  clearContent(debtsDisplay);
   clearContent(userDisplay);
   resetConfirmation();
   window.localStorage.users = JSON.stringify(users);
@@ -129,12 +122,10 @@ creditorNameDisplay.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", () => {
-  clearContent(displayExpenses);
-  clearContent(debtsDisplay);
   for (let i = 0; i < users.length; i++) {
     isThereExpenses += users[i].expenses;
     if (isThereExpenses == 0) {
-      lastResetDate.textContent = `since: ${getDate()}`;
+      lastResetDate.textContent = getDate();
     }
     let amountInputValue = amountInput.value;
     let reasonInputValue = reasonInput.value;
@@ -159,7 +150,7 @@ addButton.addEventListener("click", () => {
     }
     isThereExpenses += users[i].expenses;
     if (isThereExpenses == 0) {
-      lastResetDate.textContent = `since: ${getDate()}`;
+      lastResetDate.textContent = getDate();
     }
   }
   creditors = [];
@@ -190,7 +181,6 @@ details.addEventListener("click", () => {
 });
 
 refundBtn.addEventListener("click", () => {
-  clearContent(debtsDisplay);
   let currentCreditor = {};
   for (let i = 0; i < users.length; i++) {
     if (creditorNameDisplay.textContent == users[i].name) {
@@ -224,7 +214,7 @@ refundBtn.addEventListener("click", () => {
   window.localStorage.users = JSON.stringify(users);
 });
 
-/* modalContent.addEventListener("dblclick", (e) => {
+modalContent.addEventListener("dblclick", (e) => {
   let amount = 0;
   users.map((user, index) => {
     if (e.target.textContent == userDisplayed.reasons[index]) {
@@ -241,7 +231,7 @@ refundBtn.addEventListener("click", () => {
     }
   });
   modalContent.removeChild(e.target);
-}); */
+});
 
 closeCross.addEventListener("click", () => {
   modal.classList.add("hidden");
@@ -250,8 +240,6 @@ closeCross.addEventListener("click", () => {
 
   clearContent(modalRefunds);
   clearContent(modalContent);
-  clearContent(displayExpenses);
-  clearContent(debtsDisplay);
   displayAllExpenses(users);
   displayDebts();
 });
@@ -259,11 +247,14 @@ closeCross.addEventListener("click", () => {
 //---------- FUNCTIONS -------------------------------
 
 const displayAllExpenses = (arr) => {
-  arr.map((user) => {
-    {
-      displayExpenses.innerHTML += `<li>${user.name} ${user.expenses} €</li>`;
-    }
-  });
+  displayExpenses.innerHTML = "";
+  arr.length == 0
+    ? (displayExpenses.innerHTML = "Here will be displayed all users expenses")
+    : arr.map((user) => {
+        {
+          displayExpenses.innerHTML += `<li>${user.name} ${user.expenses} €</li>`;
+        }
+      });
 };
 
 const UserSwitchDisplay = (arr, node) => {
@@ -272,6 +263,8 @@ const UserSwitchDisplay = (arr, node) => {
     index = (index + 1) % arr.length;
 
     node.textContent = `${user.name}`;
+  } else {
+    node.textContent = "no user";
   }
 };
 
@@ -293,17 +286,20 @@ const getCreditors = () => {
 };
 
 const displayDebts = () => {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].debt <= 0) {
-      debtsDisplay.innerHTML += ` <li> ${
-        users[i].name
-      } has to receive  ${twoDigitsAfterNumber(Math.abs(users[i].debt))}€</li>`;
-    } else if (users[i].debt > 0) {
-      debtsDisplay.innerHTML += ` <li> ${
-        users[i].name
-      } owns  ${twoDigitsAfterNumber(users[i].debt)}€</li>`;
-    }
-  }
+  clearContent(debtsDisplay);
+  users.length == 0
+    ? (debtsDisplay.innerHTML += "And here will be displayed all users debts")
+    : users.map((user) => {
+        if (user.debt <= 0) {
+          debtsDisplay.innerHTML += `<li> ${
+            user.name
+          } has to receive  ${twoDigitsAfterNumber(Math.abs(user.debt))}€</li>`;
+        } else if (user.debt > 0) {
+          debtsDisplay.innerHTML += ` <li> ${
+            user.name
+          } owns  ${twoDigitsAfterNumber(user.debt)}€</li>`;
+        }
+      });
 };
 
 const switchDisplayRefundContainer = () => {
@@ -334,6 +330,7 @@ const resetConfirmation = () => {
     "You are about to reset all expenses, debts and other information saved. Do you want to continue?";
   if (confirm(text) == true) {
     users = [];
+
     getAndDisplayAllData();
     refundContainer.classList.add("hidden");
   }

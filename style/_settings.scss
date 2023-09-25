@@ -32,6 +32,9 @@
 body {
   min-height: 100vh;
   background: url(../assets/img/54501.jpg) center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 button {
   font-weight: 500;

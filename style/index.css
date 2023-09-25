@@ -33,6 +33,9 @@
 body {
   min-height: 100vh;
   background: url(../assets/img/54501.jpg) center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 button {
@@ -91,7 +94,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 nav {
   background-color: rgba(244, 244, 244, 0.902);
-  margin: 0 0 70px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   height: 70px;
   display: flex;
@@ -147,7 +149,7 @@ nav .add:hover input {
 main .app {
   background-color: rgba(255, 255, 255, 0.819);
   border-radius: 8px;
-  margin: 0 auto;
+  margin: 50px auto;
   max-width: 90%;
 }
 main .app .head-app {
@@ -411,11 +413,9 @@ main .app #refund-container #creditor-to-refund:hover {
 
 footer {
   color: white;
-  bottom: 0;
   background-color: rgba(0, 0, 0, 0.727);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
-  position: absolute;
   width: 100%;
   padding: 15px 0;
 }
