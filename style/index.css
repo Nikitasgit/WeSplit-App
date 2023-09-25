@@ -12,7 +12,7 @@
   --light-gray: #afb7bb;
   --dark-gray: #7f8588;
   --yellow: #ffc171;
-  --orange: #6e5ab2;
+  --orange: #f89545;
   --red: #c84747;
   --pistachio: #adc1a3;
 }
@@ -97,14 +97,14 @@ nav {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   height: 70px;
   display: flex;
-  color: #f89545;
+  color: var(--orange);
   padding: 0 25px;
   align-items: center;
   justify-content: space-between;
   position: relative;
 }
 nav h1 {
-  color: #f89545;
+  color: var(--orange);
 }
 nav .add {
   right: 130px;
